@@ -1,0 +1,66 @@
+.container {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.addButton {
+  display: inline-block;
+  background-color: #2ecc71;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-bottom: 1.5rem;
+  transition: background-color 0.3s;
+}
+
+.addButton:hover {
+  background-color: #27ae60;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th, .table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.table th {
+  background-color: #3498db;
+  color: white;
+}
+
+.editButton {
+  display: inline-block;
+  background-color: #f39c12;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  margin-right: 0.5rem;
+  transition: background-color 0.3s;
+}
+
+.editButton:hover {
+  background-color: #e67e22;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.deleteButton:hover {
+  background-color: #c0392b;
+}
