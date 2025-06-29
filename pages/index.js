@@ -1,5 +1,3 @@
-//frontend/pages/index.js
-
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import styles from '../styles/Home.module.css';
@@ -16,11 +14,15 @@ export default function Home() {
 
   const fetchData = async () => {
     try {
+      // Usa la variable de entorno o fallback a ruta relativa en desarrollo
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_URL || '';
+      
       const [medRes, tiposRes] = await Promise.all([
-        axios.get('/api/medicamentos'),
-        axios.get('/api/tipos-medicamento')
+        axios.get(`${apiBaseUrl}/api/medicamentos`),
+        axios.get(`${apiBaseUrl}/api/tipos-medicamento`)
       ]);
-      setMedicamentos(medRes.data.slice(0, 5)); // Mostrar solo 5 medicamentos
+      
+      setMedicamentos(medRes.data.slice(0, 5));
       setTiposMedicamento(tiposRes.data);
       setLoading(false);
     } catch (error) {
@@ -34,15 +36,10 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <h1>Sistema de Farmacia</h1>
-      <br />
-      <br />
       <div className={styles.grid}>
         <div className={styles.card}>
           <h2>Resumen de Medicamentos</h2>
-          <br />
-
           <p>Total: {medicamentos.length}</p>
-          <br />
           <Link href="/medicamentos" className={styles.link}>
             Ver todos los medicamentos →
           </Link>
@@ -50,11 +47,7 @@ export default function Home() {
         
         <div className={styles.card}>
           <h2>Tipos de Medicamentos</h2>
-          <br />
-
           <p>Total: {tiposMedicamento.length}</p>
-          <br />
-
           <Link href="/tipos-medicamento" className={styles.link}>
             Ver todos los tipos →
           </Link>
