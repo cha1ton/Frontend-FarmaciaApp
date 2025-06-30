@@ -13,7 +13,7 @@ export default function MedicamentosPage() {
 
   const fetchMedicamentos = async () => {
     try {
-      const res = await axios.get('/api/medicamentos');
+      const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/medicamentos`);
       setMedicamentos(res.data);
       setLoading(false);
     } catch (error) {
@@ -25,7 +25,7 @@ export default function MedicamentosPage() {
   const handleDelete = async (id) => {
     if (confirm('¿Estás seguro de eliminar este medicamento?')) {
       try {
-        await axios.delete(`/api/medicamentos/${id}`);
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/medicamentos/${id}`);
         fetchMedicamentos();
       } catch (error) {
         console.error('Error deleting medicamento:', error);

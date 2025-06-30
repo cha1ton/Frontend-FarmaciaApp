@@ -13,7 +13,7 @@ export default function NewMedicamento() {
   useEffect(() => {
     const fetchTipos = async () => {
       try {
-        const res = await axios.get('/api/tipos-medicamento');
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/tipos-medicamento`);
         setTipos(res.data);
       } catch (error) {
         console.error('Error fetching tipos:', error);
@@ -25,7 +25,7 @@ export default function NewMedicamento() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await axios.post('/api/medicamentos', {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/medicamentos`, {
         ...data,
         stock: parseInt(data.stock),
         precioVentaUni: parseFloat(data.precioVentaUni),

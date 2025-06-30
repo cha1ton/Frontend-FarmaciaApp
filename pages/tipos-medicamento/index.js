@@ -10,7 +10,7 @@ export default function TiposMedicamentoPage() {
   useEffect(() => {
     const fetchTipos = async () => {
       try {
-        const res = await axios.get('/api/tipos-medicamento');
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/tipos-medicamento`);
         setTipos(res.data);
         setLoading(false);
       } catch (error) {
@@ -24,7 +24,7 @@ export default function TiposMedicamentoPage() {
   const handleDelete = async (id) => {
     if (confirm('¿Estás seguro de eliminar este tipo?')) {
       try {
-        await axios.delete(`/api/tipos-medicamento/${id}`);
+        await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/tipos-medicamento/${id}`);
         setTipos(tipos.filter(tipo => tipo.CodTipoMed !== id));
       } catch (error) {
         console.error('Error deleting tipo:', error);

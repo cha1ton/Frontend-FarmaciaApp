@@ -15,8 +15,8 @@ export default function EditMedicamento() {
     const fetchData = async () => {
       try {
         const [medRes, tiposRes] = await Promise.all([
-          axios.get(`/api/medicamentos/${id}`),
-          axios.get('/api/tipos-medicamento')
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/medicamentos/${id}`),
+          axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/tipos-medicamento`)
         ]);
         
         const medicamento = medRes.data;
@@ -38,7 +38,7 @@ export default function EditMedicamento() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await axios.put(`/api/medicamentos/${id}`, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/medicamentos/${id}`, {
         ...data,
         stock: parseInt(data.stock),
         precioVentaUni: parseFloat(data.precioVentaUni),

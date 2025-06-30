@@ -13,7 +13,7 @@ export default function EditTipoMedicamento() {
   useEffect(() => {
     const fetchTipo = async () => {
       try {
-        const res = await axios.get(`/api/tipos-medicamento/${id}`);
+        const res = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/tipos-medicamento/${id}`);
         setValue('descripcion', res.data.descripcion);
       } catch (error) {
         console.error('Error fetching tipo:', error);
@@ -27,7 +27,7 @@ export default function EditTipoMedicamento() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await axios.put(`/api/tipos-medicamento/${id}`, {
+      await axios.put(`${process.env.NEXT_PUBLIC_API_URL}/api/tipos-medicamento/${id}`, {
         descripcion: data.descripcion
       });
       router.push('/tipos-medicamento');

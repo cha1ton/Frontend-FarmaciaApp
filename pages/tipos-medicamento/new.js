@@ -12,7 +12,8 @@ export default function NewTipoMedicamento() {
   const onSubmit = async (data) => {
     setIsSubmitting(true);
     try {
-      await axios.post('/api/tipos-medicamento', {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/tipos-medicamento`, {
+        
         descripcion: data.descripcion
       });
       router.push('/tipos-medicamento');
